@@ -16,7 +16,7 @@ module "e-learning" {
   availability_zone                           = var.availability_zone
   map_public_ip_on_launch                     = var.map_public_ip_on_launch
   enable_resource_name_dns_a_record_on_launch = var.enable_resource_name_dns_a_record_on_launch
-  associate_public_ip_address                 = var.associate_public_ip_address
+  # associate_public_ip_address                 = var.associate_public_ip_address
 
   
   descriptor1          = var.descriptor1
