@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        terraform 'Terraform'
+        terraform 'Terraform Project'
     }
 
     stages {
@@ -16,7 +16,7 @@ pipeline {
             steps {
                 script {
                     dir('Prod') {
-                        // Deploy to the Prod environment using terraform 
+                        // Deploy to the Production environment using terraform 
                         sh 'terraform init'
                         echo "Terraform action is --> ${action}"
                         sh ("terraform ${action} --auto-approve -var-file=Prod.tfvars")
