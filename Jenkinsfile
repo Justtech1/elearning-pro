@@ -10,6 +10,7 @@ pipeline {
                 // Checkout the code from github repo
                 checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Justtech1/elearning.git']])
         }
+    }    
 
         stage('Deploy Production') {
             steps {
