@@ -15,7 +15,7 @@ pipeline {
         stage('Deploy Production') {
             steps {
                 script {
-                    dir('Prod') {
+                    dir('Production') {
                         // Deploy to the Production environment using terraform 
                         sh 'terraform init'
                         echo "Terraform action is --> ${action}"
