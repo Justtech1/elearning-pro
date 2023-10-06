@@ -8,7 +8,7 @@ pipeline {
         stage('checkout') {
             steps {
                 // Checkout the code from github repo
-                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Justtech1/elearning.git']])
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Justtech1/elearning-pro.git']])
         }
     }    
 
