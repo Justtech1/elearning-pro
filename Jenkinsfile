@@ -12,17 +12,31 @@ pipeline {
         }
     }    
 
-        stage('Deploy Production') {
+        stage('Deploy Development') {
             steps {
                 script {
-                    dir('Production') {
-                        // Deploy to the Production environment using terraform 
+                    dir('Development') {
+                        // Deploy to the Development environment using terraform 
                         sh 'terraform init'
                         echo "Terraform action is --> ${action}"
-                        sh ("terraform ${action} --auto-approve -var-file=Prod.tfvars")
+                        sh ("terraform ${action} --auto-approve -var-file=Dev.tfvars")
                     }
                 }
             }
         }
     }
 }
+
+
+        stage('Destroy Development') {
+            steps {
+                script {
+                    dir('Development') {
+                        // Destroy to the Development environment using terraform 
+                        sh 'terraform init'
+                        echo "Terraform action is --> ${action}"
+                        sh ("terraform destroy --auto-approve -var-file=Dev.tfvars")
+                    }
+                }
+            }
+        }
