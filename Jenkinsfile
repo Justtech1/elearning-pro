@@ -12,35 +12,6 @@ pipeline {
         }
     }    
 
-        stage('Deploy Development') {
-            steps {
-                script {
-                    dir('Development') {
-                        // Deploy to the Development environment using terraform 
-                        sh 'terraform init'
-                        echo "Terraform action is --> ${action}"
-                        sh ("terraform ${action} --auto-approve -var-file=Dev.tfvars")
-                    }
-                }
-            }
-        }
-    }
-}
-
-        stage('Destroy Development') {
-            steps {
-                script {
-                    dir('Development') {
-                        // Destroy to the Development environment using terraform 
-                        sh 'terraform init'
-                        echo "Terraform action is --> ${action}"
-                        sh ("terraform destroy --auto-approve -var-file=Dev.tfvars")
-                    }
-                }
-            }
-        }
-        
-
         stage('Deploy Production') {
             steps {
                 script {
