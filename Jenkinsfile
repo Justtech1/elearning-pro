@@ -27,7 +27,6 @@ pipeline {
     }
 }
 
-
         stage('Destroy Development') {
             steps {
                 script {
@@ -40,3 +39,21 @@ pipeline {
                 }
             }
         }
+        
+
+        stage('Deploy Production') {
+            steps {
+                script {
+                    dir('Production') {
+                        // Deploy to the Prod environment using terraform 
+                        sh 'terraform init'
+                        echo "Terraform action is --> ${action}"
+                        sh ("terraform ${action} --auto-approve -var-file=Prod.tfvars")
+                    }
+                }
+            }
+        }
+    }
+}
+
+
